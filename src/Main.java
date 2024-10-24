@@ -1,4 +1,6 @@
+import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Curso;
+import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
 
 import java.time.LocalDate;
@@ -15,14 +17,23 @@ public class Main {
         curso2.setDescricao("Curso feito para aprender o basico de js");
         curso2.setCargaHoraria(60);
 
-        System.out.println(curso1);
-        System.out.println(curso2);
-
         Mentoria mentoria = new Mentoria();
         mentoria.setTitulo("Java");
         mentoria.setDescricao("Aprendendo java");
         mentoria.setDate(LocalDate.now());
 
-        System.out.println(mentoria);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setDescricao("Aprenda tudo sobre java");
+        bootcamp.setNome("Bootcamp Java");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devVicenete = new Dev();
+        devVicenete.setNome("Vicente");
+        devVicenete.inscreverBootcamp(bootcamp);
+        System.out.println("Conteudos Inscritos " + devVicenete.getContudosInscritos());
+        devVicenete.progedir();
+        System.out.println("Conteudos Concluidos "+ devVicenete.getConteudosConcluidos());
     }
 }
